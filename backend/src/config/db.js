@@ -9,7 +9,10 @@ const connectDB = async () => {
     throw new Error("❌ MONGO_URI missing");
   }
 
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(process.env.MONGO_URI, {
+    bufferCommands: false, 
+  });
+
   isConnected = true;
   console.log("✅ MongoDB connected");
 };
